@@ -19,7 +19,8 @@ window.addEventListener("scroll",scrollDown);
 
 function scrollDown() {
     var offset;
-    if (screen.width <= 768){
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (width <= 768){
         offset = 350;
     }
     else{
@@ -64,13 +65,14 @@ function navbarResize() {
     window.addEventListener("scroll", function () {
         var navbar = document.getElementById("supernav");
         var offset;
-        if (screen.width <= 768) {
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        if (width < 768) {
             offset = 285;
         }
         else {
             offset = 10;
         }
-        if (document.body.scrollTop >= 10 && offset == 10) {
+        if (document.body.scrollTop >= 80 && offset == 10) {
             navbar.style.height = "59px";
 
         }
@@ -84,6 +86,7 @@ function navbarResize() {
         else {
             navbar.style.height = "343px";
         }
+
     });
 }
 
@@ -104,15 +107,18 @@ document.getElementById('home').addEventListener( 'click',function () {
     var myDiv = document.getElementById("slide_container");
     var navbar = document.getElementById("supernav");
     var offset;
-    if (screen.width <= 768){
+    var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+    if (width <= 768){
         offset = 350;
+        scrollTo(document.body, myDiv.offsetTop - offset, 100);
         navbar.style.height = "343px";
     }
     else{
         offset = 80;
-        navbar.style.height = "100px";
-    scrollTo(document.body, myDiv.offsetTop - offset, 100);
-}});
+        scrollTo(document.body, myDiv.offsetTop - offset, 100);
+        navbar.style.height = "100px";}
+    // scrollTo(document.body, myDiv.offsetTop - offset, 100);
+});
 
 document.getElementById('trailer').addEventListener( 'click',function () {
     var myDiv = document.getElementById('source_video');
